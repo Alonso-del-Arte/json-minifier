@@ -16,6 +16,7 @@
  */
 package textops;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import org.junit.Test;
@@ -36,8 +37,18 @@ public class TextUtilsTest {
         assert TextUtils.bracketsBalanced(s) : msg;
     }
     
-    public void testBracketsBalancedPerfectNestingNotYet() {
-        //
+    @Test
+    public void testBracketsBalancedPerfectNesting() {
+        int numberOfPairs = RANDOM.nextInt(2, 20);
+        char[] openers = new char[numberOfPairs];
+        char[] closers = new char[numberOfPairs];
+        Arrays.fill(openers, '{');
+        Arrays.fill(closers, '}');
+        String sFirstHalf = new String(openers);
+        String sSecondHalf = new String(closers);
+        String s = sFirstHalf + sSecondHalf;
+        String msg = "Brackets should be balanced for \"" + s + "\"";
+        assert TextUtils.bracketsBalanced(s) : msg;
     }
     
     /**
@@ -53,6 +64,8 @@ public class TextUtilsTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+    // TODO: Write test for s including escaped brackets
 
     /**
      * Test of quotesBalanced method, of class TextUtils.
@@ -68,4 +81,6 @@ public class TextUtilsTest {
         fail("The test case is a prototype.");
     }
     
+    // TODO: Write test for s including escaped quotes
+
 }
