@@ -51,6 +51,36 @@ public class TextUtilsTest {
         assert TextUtils.bracketsBalanced(s) : msg;
     }
     
+    @Test
+    public void testBracketsNotBalancedIfOneMoreOpenerThanClosers() {
+        int numberOfPairs = RANDOM.nextInt(2, 20);
+        char[] openers = new char[numberOfPairs];
+        char[] closers = new char[numberOfPairs];
+        Arrays.fill(openers, '{');
+        Arrays.fill(closers, '}');
+        String sFirstHalf = new String(openers);
+        String sSecondHalf = new String(closers);
+        String s = sFirstHalf + '{' + sSecondHalf;
+        String msg = "Brackets should not be balanced for \"" + s 
+                + "\", which is of length " + s.length();
+        assert !TextUtils.bracketsBalanced(s) : msg;
+    }
+    
+    @Test
+    public void testBracketsNotBalancedIfOneMoreCloserThanOpeners() {
+        int numberOfPairs = RANDOM.nextInt(2, 20);
+        char[] openers = new char[numberOfPairs];
+        char[] closers = new char[numberOfPairs];
+        Arrays.fill(openers, '{');
+        Arrays.fill(closers, '}');
+        String sFirstHalf = new String(openers);
+        String sSecondHalf = new String(closers);
+        String s = sFirstHalf + '}' + sSecondHalf;
+        String msg = "Brackets should not be balanced for \"" + s 
+                + "\", which is of length " + s.length();
+        assert !TextUtils.bracketsBalanced(s) : msg;
+    }
+    
     /**
      * Test of bracketsBalanced method, of class TextUtils.
      */
