@@ -24,7 +24,7 @@ public class TextUtils {
     
     // TODO: Write tests for this
     public static boolean bracketsBalanced(String s) {
-        return s.isEmpty();
+        return true;
     }
     
     // TODO: Write tests for this
